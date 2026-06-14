@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCN HQ | Management Command Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: #1e293b; }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+    
+    /* Bright Glassmorphism */
+    .bright-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    .bright-card:hover {
+      background: rgba(255, 255, 255, 1);
+      border-color: #D4AF37;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .bg-hero {
+      background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://i.postimg.cc/4yMH9j3P/Chat-GPT-Image-Jan-14-2026-02-05-28-PM.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50">
+
+  <header class="bg-hero flex flex-col items-center justify-center min-h-screen px-6 py-12">
+      
+      <!-- Logo -->
+      <div class="mb-12">
+        <img src="https://i.postimg.cc/cJSqH0h0/Chat-GPT-Image-Jun-13-2026-09-51-06-PM.png" alt="MCN Logo" class="h-24 w-auto drop-shadow-md">
+      </div>
+
+      <!-- Heading -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-serif uppercase tracking-widest text-[#B8962D]">Management Command Center</h1>
+      </div>
+
+      <!-- Control Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+        
+        <a href="https://mcnbake.com" target="_blank" class="bright-card p-8 rounded-xl flex flex-col items-center text-center">
+          <h3 class="text-2xl font-serif mb-2 text-black">MCN Bake</h3>
+          <p class="text-slate-500 text-xs uppercase tracking-widest">Production Platform</p>
+        </a>
+
+        <a href="https://mcnbakebible.com" target="_blank" class="bright-card p-8 rounded-xl flex flex-col items-center text-center">
+          <h3 class="text-2xl font-serif mb-2 text-black">Bake Bible</h3>
+          <p class="text-slate-500 text-xs uppercase tracking-widest">Recipe & Allergens</p>
+        </a>
+
+        <a href="https://mcnfix.com" target="_blank" class="bright-card p-8 rounded-xl flex flex-col items-center text-center">
+          <h3 class="text-2xl font-serif mb-2 text-black">MCN Fix</h3>
+          <p class="text-slate-500 text-xs uppercase tracking-widest">Maintenance Hub</p>
+        </a>
+
+        <a href="https://mcnhospitality.com" target="_blank" class="bright-card p-8 rounded-xl flex flex-col items-center text-center">
+          <h3 class="text-2xl font-serif mb-2 text-black">Wine Supply</h3>
+          <p class="text-slate-500 text-xs uppercase tracking-widest">Logistics & Inventory</p>
+        </a>
+
+      </div>
+
+      <div class="mt-20 text-slate-400 text-[10px] uppercase tracking-[0.2em]">
+        Internal Management Access
+      </div>
+
+  </header>
+
+</body>
+</html>
