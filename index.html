@@ -2,12 +2,13 @@
 <html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="300"> <!-- Refreshes every 5 mins -->
   <title>MCN HQ | Live Command Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0b0f19; font-family: 'Inter', sans-serif; color: #e2e8f0; }
     .panel { background: #111827; border: 1px solid #1f2937; border-radius: 8px; transition: all 0.2s ease; }
-    .panel:hover { border-color: #f59e0b; cursor: pointer; }
+    .panel:hover { border-color: #f59e0b; }
     .status-warn { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid #d97706; }
     .status-online { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #059669; }
   </style>
@@ -27,11 +28,14 @@
   <!-- Main -->
   <main class="flex-1 p-8 overflow-y-auto">
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-xl font-bold text-white">Live Monitoring: Fix & Wine</h1>
+      <div>
+        <h1 class="text-xl font-bold text-white">Live Monitoring: Fix & Wine</h1>
+        <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Auto-refresh active (5 min interval)</p>
+      </div>
       <div id="clock" class="text-amber-500 font-mono text-sm font-bold">--:--:--</div>
     </div>
 
-    <!-- Stats Grid (Interactive) -->
+    <!-- Stats Grid -->
     <div class="grid grid-cols-2 gap-6 mb-8">
       <a href="https://mcnfix.com" target="_blank" class="panel p-6">
         <div class="text-slate-400 text-[10px] uppercase">Active Maintenance Issues</div>
@@ -43,12 +47,11 @@
       </a>
     </div>
 
-    <!-- Live Monitor Cards (Interactive) -->
+    <!-- Live Monitor Cards -->
     <div class="grid grid-cols-2 gap-8">
-      <!-- MCN Fix Monitor -->
       <a href="https://mcnfix.com" target="_blank" class="panel p-6 block">
         <div class="flex justify-between items-center mb-6">
-          <h3 class="font-bold text-white">MCN FIX (MAINTENANCE)</h3>
+          <h3 class="font-bold text-white text-sm">MCN FIX (MAINTENANCE)</h3>
           <span class="px-2 py-1 rounded text-[10px] status-warn">WARNING</span>
         </div>
         <div class="space-y-3 text-xs text-slate-400">
@@ -57,10 +60,9 @@
         </div>
       </a>
 
-      <!-- Wine Monitor -->
       <a href="https://www.mcnwine.xyz" target="_blank" class="panel p-6 block">
         <div class="flex justify-between items-center mb-6">
-          <h3 class="font-bold text-white">WINE LOGISTICS</h3>
+          <h3 class="font-bold text-white text-sm">WINE LOGISTICS</h3>
           <span class="px-2 py-1 rounded text-[10px] status-online">ONLINE</span>
         </div>
         <div class="space-y-3 text-xs text-slate-400">
