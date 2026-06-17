@@ -7,16 +7,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { background: #f4f4f5; font-family: 'Inter', sans-serif; }
-    .sidebar { background: #0f172a; }
+    body { background: #f4f4f5; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+    .sidebar { background: #0f172a; transition: width 0.3s ease, opacity 0.3s ease; }
     .glass-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
     iframe { width: 100%; height: 100%; border: none; }
+    /* Fullscreen state */
+    .fullscreen-mode .sidebar { display: none; }
+    .fullscreen-mode .main-content { margin-left: 0 !important; padding: 0 !important; }
   </style>
 </head>
-<body class="flex min-h-screen">
+<body class="flex min-h-screen" id="appBody">
 
   <!-- Sidebar -->
-  <aside class="sidebar w-64 p-6 flex flex-col text-white">
+  <aside class="sidebar w-64 p-6 flex flex-col text-white" id="sidebar">
     <div class="mb-10 font-bold text-xl uppercase tracking-widest italic">MCN <span class="text-amber-500">Hospitality</span></div>
     <nav class="flex-grow space-y-6 text-sm text-slate-400">
       <a href="#" class="flex items-center text-white"><span class="mr-3">📊</span> Dashboard</a>
@@ -29,34 +32,43 @@
   </aside>
 
   <!-- Main Content -->
-  <main class="flex-1 p-8 flex flex-col h-screen">
-    <header class="mb-6">
-      <h1 class="text-2xl font-bold text-slate-900">Live Operations Monitor</h1>
-      <p class="text-slate-500 text-xs uppercase tracking-widest">Maintenance & Wine Logistics</p>
+  <main class="flex-1 p-8 flex flex-col h-screen main-content" id="mainContent">
+    <header class="mb-6 flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Live Operations Monitor</h1>
+      </div>
+      <!-- Fullscreen Button -->
+      <button onclick="toggleFullscreen()" class="bg-slate-900 text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-widest hover:bg-amber-600 transition-colors">
+        Toggle Fullscreen
+      </button>
     </header>
 
     <!-- Split View Embeds -->
     <div class="flex-1 grid grid-cols-2 gap-6 min-h-0">
-      
-      <!-- MCN Fix Embed -->
       <div class="glass-box flex flex-col">
-        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">
-          MCN FIX (MAINTENANCE)
-          <a href="https://mcnfix.com" target="_blank" class="text-amber-600 underline">Open Full</a>
-        </div>
+        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">MCN FIX (MAINTENANCE)</div>
         <iframe src="https://mcnfix.com" title="MCN Fix"></iframe>
       </div>
-
-      <!-- Wine Supply Embed -->
       <div class="glass-box flex flex-col">
-        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">
-          WINE LOGISTICS
-          <a href="https://www.mcnwine.xyz" target="_blank" class="text-amber-600 underline">Open Full</a>
-        </div>
+        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">WINE LOGISTICS</div>
         <iframe src="https://www.mcnwine.xyz" title="Wine Supply"></iframe>
       </div>
-
     </div>
   </main>
+
+  <script>
+    function toggleFullscreen() {
+      const body = document.getElementById('appBody');
+      const doc = document.documentElement;
+      
+      if (!document.fullscreenElement) {
+        doc.requestFullscreen();
+        body.classList.add('fullscreen-mode');
+      } else {
+        document.exitFullscreen();
+        body.classList.remove('fullscreen-mode');
+      }
+    }
+  </script>
 </body>
 </html>
