@@ -2,15 +2,14 @@
 <html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <title>MCN HQ | Control Hub</title>
+  <title>MCN HQ | Live Command Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0b0f19; font-family: 'Inter', sans-serif; color: #e2e8f0; }
-    .panel { background: #111827; border: 1px solid #1f2937; border-radius: 8px; }
-    .status-online { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #059669; }
+    .panel { background: #111827; border: 1px solid #1f2937; border-radius: 8px; transition: all 0.2s ease; }
+    .panel:hover { border-color: #f59e0b; cursor: pointer; }
     .status-warn { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid #d97706; }
-    .progress-bar { height: 6px; background: #1f2937; border-radius: 3px; overflow: hidden; }
-    .progress-fill { height: 100%; background: #d97706; }
+    .status-online { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #059669; }
   </style>
 </head>
 <body class="flex h-screen">
@@ -18,54 +17,64 @@
   <!-- Sidebar -->
   <aside class="w-64 border-r border-white/5 p-6 flex flex-col bg-[#0b0f19]">
     <div class="mb-10 text-white font-bold text-lg tracking-widest uppercase">MCN <span class="text-amber-500">HQ</span></div>
-    <nav class="space-y-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
-      <a href="#" class="text-white block py-2 border-l-2 border-amber-500 pl-4">Control Hub</a>
-      <a href="#" class="block py-2 hover:text-white pl-4">MCN Bake</a>
-      <a href="#" class="block py-2 hover:text-white pl-4">Bake Bible</a>
-      <a href="#" class="block py-2 hover:text-white pl-4">MCN Fix</a>
-      <a href="#" class="block py-2 hover:text-white pl-4">Wine Logistics</a>
+    <nav class="space-y-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <a href="#" class="text-white block py-2 border-l-2 border-amber-500 pl-4">Live Command</a>
+      <a href="https://mcnfix.com" target="_blank" class="block py-2 hover:text-white pl-4 transition-colors">MCN Fix Portal</a>
+      <a href="https://www.mcnwine.xyz" target="_blank" class="block py-2 hover:text-white pl-4 transition-colors">Wine Portal</a>
     </nav>
   </aside>
 
   <!-- Main -->
   <main class="flex-1 p-8 overflow-y-auto">
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-xl font-bold text-white">Operations Dashboard</h1>
-      <div class="text-[10px] text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded border border-emerald-500/20">● LIVE MONITORING ACTIVE</div>
+      <h1 class="text-xl font-bold text-white">Live Monitoring: Fix & Wine</h1>
+      <div id="clock" class="text-amber-500 font-mono text-sm font-bold">--:--:--</div>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-4 gap-4 mb-8">
-      <div class="panel p-5"><div class="text-slate-400 text-[10px] uppercase">Venues</div><div class="text-2xl font-bold mt-1 text-white">4</div></div>
-      <div class="panel p-5"><div class="text-slate-400 text-[10px] uppercase">Orders</div><div class="text-2xl font-bold mt-1 text-white">18</div></div>
-      <div class="panel p-5"><div class="text-slate-400 text-[10px] uppercase">Stock Alerts</div><div class="text-2xl font-bold mt-1 text-amber-500">3</div></div>
-      <div class="panel p-5"><div class="text-slate-400 text-[10px] uppercase">Maintenance</div><div class="text-2xl font-bold mt-1 text-red-500">2</div></div>
+    <!-- Stats Grid (Interactive) -->
+    <div class="grid grid-cols-2 gap-6 mb-8">
+      <a href="https://mcnfix.com" target="_blank" class="panel p-6">
+        <div class="text-slate-400 text-[10px] uppercase">Active Maintenance Issues</div>
+        <div class="text-4xl font-bold mt-2 text-red-500">2</div>
+      </a>
+      <a href="https://www.mcnwine.xyz" target="_blank" class="panel p-6">
+        <div class="text-slate-400 text-[10px] uppercase">Pending Wine Orders</div>
+        <div class="text-4xl font-bold mt-2 text-amber-500">18</div>
+      </a>
     </div>
 
-    <!-- Live Modules -->
+    <!-- Live Monitor Cards (Interactive) -->
     <div class="grid grid-cols-2 gap-8">
-      <!-- Status Box -->
-      <div class="panel p-6">
-        <h3 class="text-xs font-bold text-slate-400 uppercase mb-6">Platform Status</h3>
-        <div class="space-y-4">
-          <div class="flex items-center justify-between"><span>MCN Bake</span><span class="px-2 py-0.5 rounded text-[10px] status-online">ONLINE</span></div>
-          <div class="flex items-center justify-between"><span>Bake Bible</span><span class="px-2 py-0.5 rounded text-[10px] status-online">ONLINE</span></div>
-          <div class="flex items-center justify-between"><span>MCN Fix</span><span class="px-2 py-0.5 rounded text-[10px] status-warn">WARNING</span></div>
-          <!-- Added progress bar for a 'live' feel -->
-          <div class="mt-2"><div class="text-[10px] text-slate-500 mb-1">System Load</div><div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div></div>
+      <!-- MCN Fix Monitor -->
+      <a href="https://mcnfix.com" target="_blank" class="panel p-6 block">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="font-bold text-white">MCN FIX (MAINTENANCE)</h3>
+          <span class="px-2 py-1 rounded text-[10px] status-warn">WARNING</span>
         </div>
-      </div>
+        <div class="space-y-3 text-xs text-slate-400">
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>Fridge Repair - Shotton Grange</span> <span>In Progress</span></div>
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>HVAC Service - The Parlour</span> <span>Assigned</span></div>
+        </div>
+      </a>
 
-      <!-- Activity Feed -->
-      <div class="panel p-6">
-        <h3 class="text-xs font-bold text-slate-400 uppercase mb-6">Live Activity Feed</h3>
-        <div class="space-y-4 text-xs">
-          <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-blue-500"></span> <span>[FIX] New Ticket: Gibraltar Rock</span><span class="ml-auto text-slate-500">09:21</span></div>
-          <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-500"></span> <span>[WINE] Delivery: Marshall Meadows</span><span class="ml-auto text-slate-500">08:47</span></div>
-          <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> <span>[BAKE] Order #4492 Confirmed</span><span class="ml-auto text-slate-500">08:15</span></div>
+      <!-- Wine Monitor -->
+      <a href="https://www.mcnwine.xyz" target="_blank" class="panel p-6 block">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="font-bold text-white">WINE LOGISTICS</h3>
+          <span class="px-2 py-1 rounded text-[10px] status-online">ONLINE</span>
         </div>
-      </div>
+        <div class="space-y-3 text-xs text-slate-400">
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>Van 01: Gibraltar Rock</span> <span>5m Away</span></div>
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>Van 02: Marshall Meadows</span> <span>Unloading</span></div>
+        </div>
+      </a>
     </div>
   </main>
+
+  <script>
+    setInterval(() => {
+      document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+    }, 1000);
+  </script>
 </body>
 </html>
