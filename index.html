@@ -3,63 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCN Command Center</title>
+  <title>MCN HQ | Operations Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { background: #0f172a; color: white; font-family: 'Inter', sans-serif; }
-    .widget { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
+    body { background: #f4f4f5; font-family: 'Inter', sans-serif; }
+    .sidebar { background: #0f172a; }
+    .glass-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; }
   </style>
 </head>
-<body class="p-8">
+<body class="flex min-h-screen">
 
-  <!-- Header -->
-  <header class="mb-10 flex justify-between items-center">
-    <div>
-      <h1 class="text-4xl font-bold tracking-tight">Command Center</h1>
-      <p class="text-slate-400">Live Operational Telemetry</p>
-    </div>
-    <div id="clock" class="text-4xl font-mono text-amber-500 font-bold">09:42</div>
-  </header>
-
-  <!-- Top: Just the 2 Apps -->
-  <div class="grid grid-cols-2 gap-8 mb-8">
-    <a href="https://mcnfix.com" class="widget p-8 hover:border-amber-500 transition-all text-center">
-      <h2 class="text-3xl font-bold">🔧 MCN Fix</h2>
-      <p class="text-slate-400 uppercase tracking-widest text-xs mt-2">Active Maintenance Hub</p>
-    </a>
-    <a href="https://www.mcnwine.xyz" class="widget p-8 hover:border-amber-500 transition-all text-center">
-      <h2 class="text-3xl font-bold">🍷 Wine Supply</h2>
-      <p class="text-slate-400 uppercase tracking-widest text-xs mt-2">Logistics & Inventory</p>
-    </a>
-  </div>
-
-  <!-- Bottom: Real-time Tracking Areas -->
-  <div class="grid grid-cols-2 gap-8 h-96">
-    <!-- Maintenance Feed -->
-    <div class="widget p-6">
-      <h3 class="font-bold text-amber-500 mb-4 flex justify-between">LIVE MAINTENANCE FEED <span>● LIVE</span></h3>
-      <div class="space-y-4 text-sm text-slate-300">
-        <div class="border-b border-slate-700 pb-2 flex justify-between"><span>Fridge Repair - Shotton Grange</span> <span class="text-amber-500">In Progress</span></div>
-        <div class="border-b border-slate-700 pb-2 flex justify-between"><span>HVAC Service - The Parlour</span> <span class="text-blue-400">Assigned</span></div>
-        <div class="border-b border-slate-700 pb-2 flex justify-between"><span>Light Fixture - Tide</span> <span class="text-green-400">Completed</span></div>
+  <!-- Sidebar -->
+  <aside class="sidebar w-64 p-6 flex flex-col text-white">
+    <div class="mb-10 font-bold text-xl uppercase tracking-widest italic">MCN <span class="text-amber-500">Hospitality</span></div>
+    <nav class="flex-grow space-y-6 text-sm text-slate-400">
+      <a href="#" class="flex items-center text-white"><span class="mr-3">📊</span> Dashboard</a>
+      <a href="https://mcnbake.com" target="_blank" class="flex items-center hover:text-white transition-colors"><span>🍰</span> MCN Bake</a>
+      <a href="https://mcnbakebible.com" target="_blank" class="flex items-center hover:text-white transition-colors"><span>📖</span> Bake Bible</a>
+      <a href="https://mcnfix.com" target="_blank" class="flex items-center hover:text-white transition-colors"><span>🔧</span> MCN Fix</a>
+      <a href="https://www.mcnwine.xyz" target="_blank" class="flex items-center hover:text-white transition-colors"><span>🍷</span> Wine Supply</a>
+    </nav>
+    <div class="mt-auto border-t border-slate-700 pt-6">
+      <div class="flex items-center">
+        <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center font-bold text-black mr-3">JD</div>
+        <div>
+          <div class="text-xs font-bold">John Davies</div>
+          <div class="text-[10px] text-slate-400">Operations Director</div>
+        </div>
       </div>
     </div>
+  </aside>
 
-    <!-- Wine Delivery Feed -->
-    <div class="widget p-6">
-      <h3 class="font-bold text-amber-500 mb-4 flex justify-between">LIVE LOGISTICS TRACKING <span>● LIVE</span></h3>
-      <div class="space-y-4 text-sm text-slate-300">
-        <div class="border-b border-slate-700 pb-2 flex justify-between"><span>Van 01: Gibraltar Rock</span> <span class="text-green-400">5 Mins Away</span></div>
-        <div class="border-b border-slate-700 pb-2 flex justify-between"><span>Van 02: Marshall Meadows</span> <span class="text-amber-500">Unloading</span></div>
+  <!-- Main Content -->
+  <main class="flex-1 p-10">
+    <header class="mb-10 flex justify-between items-end">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900">MCN Hospitality Operations Dashboard</h1>
+        <p class="text-slate-500 uppercase text-xs tracking-widest mt-1">Production. Maintenance. Inventory. Intelligence.</p>
+      </div>
+    </header>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="glass-box p-6"><div class="text-3xl font-bold">4</div><div class="text-[10px] text-slate-400 uppercase tracking-wider">Venues Online</div></div>
+      <div class="glass-box p-6"><div class="text-3xl font-bold">18</div><div class="text-[10px] text-slate-400 uppercase tracking-wider">Orders Today</div></div>
+      <div class="glass-box p-6"><div class="text-3xl font-bold">3</div><div class="text-[10px] text-slate-400 uppercase tracking-wider">Stock Alerts</div></div>
+      <div class="glass-box p-6"><div class="text-3xl font-bold">2</div><div class="text-[10px] text-slate-400 uppercase tracking-wider">Maintenance</div></div>
+    </div>
+
+    <!-- App Cards -->
+    <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="glass-box p-6 flex flex-col"><h3 class="font-bold">MCN Bake</h3><p class="text-[10px] text-slate-400 mb-4">LIVE PRODUCTION</p><a href="https://mcnbake.com" class="mt-auto text-amber-600 text-sm font-bold">Open Platform →</a></div>
+      <div class="glass-box p-6 flex flex-col"><h3 class="font-bold">Bake Bible</h3><p class="text-[10px] text-slate-400 mb-4">RECIPES & ALLERGENS</p><a href="https://mcnbakebible.com" class="mt-auto text-amber-600 text-sm font-bold">Search Database →</a></div>
+      <div class="glass-box p-6 flex flex-col"><h3 class="font-bold">MCN Fix</h3><p class="text-[10px] text-slate-400 mb-4">MAINTENANCE HUB</p><a href="https://mcnfix.com" class="mt-auto text-amber-600 text-sm font-bold">View Tickets →</a></div>
+      <div class="glass-box p-6 flex flex-col"><h3 class="font-bold">Wine Supply</h3><p class="text-[10px] text-slate-400 mb-4">INVENTORY & LOGISTICS</p><a href="https://www.mcnwine.xyz" class="mt-auto text-amber-600 text-sm font-bold">Manage Deliveries →</a></div>
+    </div>
+
+    <!-- Bottom Tables Section -->
+    <div class="grid grid-cols-3 gap-6">
+      <div class="glass-box p-6">
+        <div class="flex justify-between mb-4"><h3 class="font-bold text-sm">Recent Activity</h3><span class="text-[10px] text-slate-400">View all</span></div>
+        <div class="space-y-4 text-xs text-slate-600">
+          <div class="flex justify-between border-b pb-2"><span>New order: Gibraltar Rock</span><span class="text-slate-400">09:21</span></div>
+          <div class="flex justify-between border-b pb-2"><span>Stock alert: Chocolate Orange</span><span class="text-slate-400">08:47</span></div>
+          <div class="flex justify-between"><span>Maintenance: Shotton Grange</span><span class="text-slate-400">08:15</span></div>
+        </div>
+      </div>
+
+      <div class="glass-box p-6">
+        <div class="flex justify-between mb-4"><h3 class="font-bold text-sm">Stock Alerts</h3><span class="text-[10px] text-slate-400">View all</span></div>
+        <div class="space-y-4 text-xs text-slate-600">
+          <div class="flex justify-between border-b pb-2"><span>Chocolate Orange Ganache</span><span class="text-red-500 font-bold text-[10px]">LOW</span></div>
+          <div class="flex justify-between border-b pb-2"><span>Vanilla Cheesecake</span><span class="text-red-500 font-bold text-[10px]">LOW</span></div>
+          <div class="flex justify-between"><span>Raspberry Coulis</span><span class="text-red-500 font-bold text-[10px]">LOW</span></div>
+        </div>
+      </div>
+
+      <div class="glass-box p-6">
+        <div class="flex justify-between mb-4"><h3 class="font-bold text-sm">Today's Deliveries</h3><span class="text-[10px] text-slate-400">View all</span></div>
+        <div class="space-y-4 text-xs text-slate-600">
+          <div class="flex justify-between border-b pb-2"><span>Gibraltar Rock</span><span class="text-green-600 font-medium">Out for delivery</span></div>
+          <div class="flex justify-between border-b pb-2"><span>The Parlour</span><span class="text-slate-400">Scheduled</span></div>
+          <div class="flex justify-between"><span>Shotton Grange</span><span class="text-slate-400">Scheduled</span></div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <script>
-    // Simple clock update
-    setInterval(() => {
-      document.getElementById('clock').innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }, 1000);
-  </script>
+  </main>
 </body>
 </html>
