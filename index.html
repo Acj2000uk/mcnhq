@@ -2,74 +2,49 @@
 <html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="300"> <!-- Refreshes every 5 mins -->
-  <title>MCN HQ | Live Command Hub</title>
+  <title>MCN HQ | Split Monitor</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0b0f19; font-family: 'Inter', sans-serif; color: #e2e8f0; }
-    .panel { background: #111827; border: 1px solid #1f2937; border-radius: 8px; transition: all 0.2s ease; }
-    .panel:hover { border-color: #f59e0b; }
-    .status-warn { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid #d97706; }
-    .status-online { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #059669; }
+    .sidebar { background: #0f172a; }
+    .split-panel { background: #111827; border: 1px solid #1f2937; border-radius: 8px; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+    iframe { width: 100%; height: 100%; border: none; background: white; }
   </style>
 </head>
-<body class="flex h-screen">
+<body class="flex h-screen overflow-hidden">
 
   <!-- Sidebar -->
   <aside class="w-64 border-r border-white/5 p-6 flex flex-col bg-[#0b0f19]">
     <div class="mb-10 text-white font-bold text-lg tracking-widest uppercase">MCN <span class="text-amber-500">HQ</span></div>
     <nav class="space-y-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
-      <a href="#" class="text-white block py-2 border-l-2 border-amber-500 pl-4">Live Command</a>
+      <a href="#" class="text-white block py-2 border-l-2 border-amber-500 pl-4">Live Split Monitor</a>
       <a href="https://mcnfix.com" target="_blank" class="block py-2 hover:text-white pl-4 transition-colors">MCN Fix Portal</a>
       <a href="https://www.mcnwine.xyz" target="_blank" class="block py-2 hover:text-white pl-4 transition-colors">Wine Portal</a>
     </nav>
   </aside>
 
-  <!-- Main -->
-  <main class="flex-1 p-8 overflow-y-auto">
-    <div class="flex justify-between items-center mb-8">
-      <div>
-        <h1 class="text-xl font-bold text-white">Live Monitoring: Fix & Wine</h1>
-        <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Auto-refresh active (5 min interval)</p>
+  <!-- Main Split Content -->
+  <main class="flex-1 p-6 flex flex-col h-full gap-6">
+    <header class="flex justify-between items-center">
+      <h1 class="text-xl font-bold text-white">Live Monitoring: Side-by-Side</h1>
+      <div id="clock" class="text-amber-500 font-mono text-sm">--:--</div>
+    </header>
+
+    <!-- Side-by-Side View -->
+    <div class="flex-1 flex gap-6 min-h-0">
+      
+      <!-- Left App -->
+      <div class="split-panel">
+        <div class="p-2 bg-slate-900 text-[10px] text-center font-bold text-slate-400 uppercase">MCN Fix Monitoring</div>
+        <iframe src="https://mcnfix.com" title="MCN Fix"></iframe>
       </div>
-      <div id="clock" class="text-amber-500 font-mono text-sm font-bold">--:--:--</div>
-    </div>
 
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-2 gap-6 mb-8">
-      <a href="https://mcnfix.com" target="_blank" class="panel p-6">
-        <div class="text-slate-400 text-[10px] uppercase">Active Maintenance Issues</div>
-        <div class="text-4xl font-bold mt-2 text-red-500">2</div>
-      </a>
-      <a href="https://www.mcnwine.xyz" target="_blank" class="panel p-6">
-        <div class="text-slate-400 text-[10px] uppercase">Pending Wine Orders</div>
-        <div class="text-4xl font-bold mt-2 text-amber-500">18</div>
-      </a>
-    </div>
+      <!-- Right App -->
+      <div class="split-panel">
+        <div class="p-2 bg-slate-900 text-[10px] text-center font-bold text-slate-400 uppercase">Wine Supply Monitoring</div>
+        <iframe src="https://www.mcnwine.xyz" title="Wine Supply"></iframe>
+      </div>
 
-    <!-- Live Monitor Cards -->
-    <div class="grid grid-cols-2 gap-8">
-      <a href="https://mcnfix.com" target="_blank" class="panel p-6 block">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="font-bold text-white text-sm">MCN FIX (MAINTENANCE)</h3>
-          <span class="px-2 py-1 rounded text-[10px] status-warn">WARNING</span>
-        </div>
-        <div class="space-y-3 text-xs text-slate-400">
-          <div class="flex justify-between border-b border-white/5 pb-2"><span>Fridge Repair - Shotton Grange</span> <span>In Progress</span></div>
-          <div class="flex justify-between border-b border-white/5 pb-2"><span>HVAC Service - The Parlour</span> <span>Assigned</span></div>
-        </div>
-      </a>
-
-      <a href="https://www.mcnwine.xyz" target="_blank" class="panel p-6 block">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="font-bold text-white text-sm">WINE LOGISTICS</h3>
-          <span class="px-2 py-1 rounded text-[10px] status-online">ONLINE</span>
-        </div>
-        <div class="space-y-3 text-xs text-slate-400">
-          <div class="flex justify-between border-b border-white/5 pb-2"><span>Van 01: Gibraltar Rock</span> <span>5m Away</span></div>
-          <div class="flex justify-between border-b border-white/5 pb-2"><span>Van 02: Marshall Meadows</span> <span>Unloading</span></div>
-        </div>
-      </a>
     </div>
   </main>
 
