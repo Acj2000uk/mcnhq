@@ -1,74 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCN HQ | Live Command Center</title>
+  <title>MCN Operations | Control Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { background: #f4f4f5; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
-    .sidebar { background: #0f172a; transition: width 0.3s ease, opacity 0.3s ease; }
-    .glass-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
-    iframe { width: 100%; height: 100%; border: none; }
-    /* Fullscreen state */
-    .fullscreen-mode .sidebar { display: none; }
-    .fullscreen-mode .main-content { margin-left: 0 !important; padding: 0 !important; }
+    body { background: #0b0f19; font-family: 'Inter', sans-serif; }
+    .panel { background: rgba(17, 24, 39, 0.7); border: 1px solid rgba(255,255,255,0.05); }
+    .glow-green { box-shadow: 0 0 10px rgba(34, 197, 94, 0.2); }
+    .glow-red { box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
   </style>
 </head>
-<body class="flex min-h-screen" id="appBody">
+<body class="h-full flex overflow-hidden">
 
   <!-- Sidebar -->
-  <aside class="sidebar w-64 p-6 flex flex-col text-white" id="sidebar">
-    <div class="mb-10 font-bold text-xl uppercase tracking-widest italic">MCN <span class="text-amber-500">Hospitality</span></div>
-    <nav class="flex-grow space-y-6 text-sm text-slate-400">
-      <a href="#" class="flex items-center text-white"><span class="mr-3">📊</span> Dashboard</a>
-      <a href="https://mcnbake.com" target="_blank" class="flex items-center hover:text-white transition-colors"><span>🍰</span> MCN Bake</a>
-      <a href="https://mcnbakebible.com" target="_blank" class="flex items-center hover:text-white transition-colors"><span>📖</span> Bake Bible</a>
+  <aside class="w-64 border-r border-white/10 p-6 flex flex-col bg-[#0b0f19]">
+    <div class="mb-12 font-bold text-xl uppercase tracking-widest text-white italic">MCN <span class="text-amber-500">HQ</span></div>
+    <nav class="space-y-8 text-sm">
+      <a href="#" class="flex items-center text-amber-500 font-bold"><span class="mr-3">■</span> Control Hub</a>
+      <a href="https://mcnbake.com" target="_blank" class="flex items-center text-slate-400 hover:text-white"><span>🍰</span> MCN Bake</a>
+      <a href="https://mcnbakebible.com" target="_blank" class="flex items-center text-slate-400 hover:text-white"><span>📖</span> Bake Bible</a>
+      <a href="https://mcnfix.com" target="_blank" class="flex items-center text-slate-400 hover:text-white"><span>🔧</span> MCN Fix</a>
+      <a href="https://www.mcnwine.xyz" target="_blank" class="flex items-center text-slate-400 hover:text-white"><span>🍷</span> Wine Logistics</a>
     </nav>
-    <div class="mt-auto border-t border-slate-700 pt-6 text-[10px] text-slate-500">
-      SYSTEM STATUS: <span class="text-green-500">● LIVE</span>
-    </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-1 p-8 flex flex-col h-screen main-content" id="mainContent">
-    <header class="mb-6 flex justify-between items-center">
-      <div>
-        <h1 class="text-2xl font-bold text-slate-900">Live Operations Monitor</h1>
+  <!-- Main Viewport -->
+  <main class="flex-1 flex flex-col h-full overflow-hidden">
+    <!-- Top Status Bar -->
+    <header class="h-16 border-b border-white/10 flex items-center justify-between px-8 bg-[#0b0f19]">
+      <h2 class="text-white font-semibold">Operations Dashboard</h2>
+      <div class="flex items-center gap-6 text-[10px] uppercase tracking-widest">
+        <span class="flex items-center text-emerald-500">● SYSTEMS OPERATIONAL</span>
+        <span class="text-slate-500">LAST SYNC: 09:42</span>
       </div>
-      <!-- Fullscreen Button -->
-      <button onclick="toggleFullscreen()" class="bg-slate-900 text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-widest hover:bg-amber-600 transition-colors">
-        Toggle Fullscreen
-      </button>
     </header>
 
-    <!-- Split View Embeds -->
-    <div class="flex-1 grid grid-cols-2 gap-6 min-h-0">
-      <div class="glass-box flex flex-col">
-        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">MCN FIX (MAINTENANCE)</div>
-        <iframe src="https://mcnfix.com" title="MCN Fix"></iframe>
+    <!-- Content Grid -->
+    <div class="p-8 grid grid-cols-4 gap-6 overflow-y-auto">
+      
+      <!-- Key Metric Cards -->
+      <div class="panel p-6 rounded-xl glow-green"><div class="text-emerald-500 text-xs font-bold mb-1">VENUES</div><div class="text-3xl font-bold">4</div></div>
+      <div class="panel p-6 rounded-xl"><div class="text-blue-400 text-xs font-bold mb-1">ORDERS</div><div class="text-3xl font-bold">18</div></div>
+      <div class="panel p-6 rounded-xl"><div class="text-amber-500 text-xs font-bold mb-1">STOCK ALERTS</div><div class="text-3xl font-bold">3</div></div>
+      <div class="panel p-6 rounded-xl glow-red"><div class="text-red-500 text-xs font-bold mb-1">MAINTENANCE</div><div class="text-3xl font-bold">2</div></div>
+
+      <!-- App Status Cards -->
+      <div class="col-span-2 panel p-6 rounded-xl">
+        <h3 class="text-sm font-bold text-white mb-4">PLATFORM STATUS</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center text-sm"><span>MCN Bake</span><span class="text-emerald-500 text-xs">● ONLINE</span></div>
+          <div class="flex justify-between items-center text-sm"><span>Bake Bible</span><span class="text-emerald-500 text-xs">● ONLINE</span></div>
+          <div class="flex justify-between items-center text-sm"><span>MCN Fix</span><span class="text-amber-500 text-xs">● WARNING</span></div>
+          <div class="flex justify-between items-center text-sm"><span>Wine Logistics</span><span class="text-emerald-500 text-xs">● ONLINE</span></div>
+        </div>
       </div>
-      <div class="glass-box flex flex-col">
-        <div class="p-3 border-b bg-slate-50 flex justify-between items-center text-xs font-bold">WINE LOGISTICS</div>
-        <iframe src="https://www.mcnwine.xyz" title="Wine Supply"></iframe>
+
+      <!-- Live Feeds -->
+      <div class="col-span-2 panel p-6 rounded-xl">
+        <h3 class="text-sm font-bold text-white mb-4">LIVE ACTIVITY FEED</h3>
+        <div class="space-y-3 text-xs text-slate-300">
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>[FIX] New Ticket: Gibraltar Rock</span><span class="text-slate-500">09:21</span></div>
+          <div class="flex justify-between border-b border-white/5 pb-2"><span>[WINE] Delivery: Marshall Meadows</span><span class="text-slate-500">08:47</span></div>
+          <div class="flex justify-between"><span>[BAKE] Order #4492 Confirmed</span><span class="text-slate-500">08:15</span></div>
+        </div>
       </div>
     </div>
   </main>
-
-  <script>
-    function toggleFullscreen() {
-      const body = document.getElementById('appBody');
-      const doc = document.documentElement;
-      
-      if (!document.fullscreenElement) {
-        doc.requestFullscreen();
-        body.classList.add('fullscreen-mode');
-      } else {
-        document.exitFullscreen();
-        body.classList.remove('fullscreen-mode');
-      }
-    }
-  </script>
 </body>
 </html>
